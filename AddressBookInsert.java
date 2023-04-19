@@ -117,8 +117,6 @@ public class AddressBook {
 			 */
 
 			System.out.println("1.ADD CONTACT");
-			System.out.println("2.UPDATE CONTACT");
-			System.out.println("3.DELETE CONTACT");
 			choice = sc.nextInt();
 
 			/*
