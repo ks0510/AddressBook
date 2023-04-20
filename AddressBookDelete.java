@@ -6,6 +6,8 @@ package com.addressbook;
 
 import java.util.*;
 
+import java.io.*;
+
 /**
  * 
  * @author Kaif
@@ -91,9 +93,10 @@ public class AddressBook {
 	 * This is starting point of this java program and main function
 	 * 
 	 * @param args
+	 * @throws IOException
 	 */
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		/*
 		 * To declare array list for address book
@@ -101,9 +104,9 @@ public class AddressBook {
 
 		ArrayList<Person> addressBook = new ArrayList<Person>();
 
-		Scanner sc = new Scanner(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		Scanner s = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 
 		int choice;
 
@@ -132,25 +135,25 @@ public class AddressBook {
 
 			case 1:
 				System.out.println("Enter First name");
-				String firstName = sc.nextLine();
+				String firstName = br.readLine();
 
 				System.out.println("Enter Last name");
-				String lastName = sc.nextLine();
+				String lastName = br.readLine();
 
 				System.out.println("Enter Address");
-				String address = sc.nextLine();
+				String address = br.readLine();
 
 				System.out.println("Enter City");
-				String city = sc.nextLine();
+				String city = br.readLine();
 
 				System.out.println("Enter zip");
-				int zip = s.nextInt();
+				int zip = sc.nextInt();
 
 				System.out.println("Enter Phone Number");
-				double phoneNumber = s.nextDouble();
+				double phoneNumber = sc.nextDouble();
 
 				System.out.println("Enter Email");
-				String email = sc.nextLine();
+				String email = br.readLine();
 
 				addressBook.add(new Person(firstName, lastName, address, city, zip, phoneNumber, email));
 
@@ -162,30 +165,30 @@ public class AddressBook {
 				 */
 				boolean found = false;
 				System.out.println("Enter name to update");
-				lastName = sc.nextLine();
+				lastName = sc.next();
 
 				ListIterator<Person> li = addressBook.listIterator();
 				while (li.hasNext()) {
 					Person p = li.next();
-					if (p.getFirstName() == lastName) {
+					if (p.getLastName().equals(lastName)) {
 
 						System.out.println("Enter new first name");
-						firstName = sc.nextLine();
+						firstName = br.readLine();
 
 						System.out.println("Enter new Address");
-						address = sc.nextLine();
+						address = br.readLine();
 
 						System.out.println("Enter new City");
-						city = sc.nextLine();
+						city = br.readLine();
 
 						System.out.println("Enter new zip");
-						zip = s.nextInt();
+						zip = sc.nextInt();
 
 						System.out.println("Enter new Phone Number");
-						phoneNumber = s.nextDouble();
+						phoneNumber = sc.nextDouble();
 
 						System.out.println("Enter new Email");
-						email = sc.nextLine();
+						email = br.readLine();
 
 						li.set(new Person(firstName, lastName, address, city, zip, phoneNumber, email));
 						found = true;
@@ -204,11 +207,11 @@ public class AddressBook {
 				 */
 				found = false;
 				System.out.println("Enter Last name to Delete");
-				lastName = s.nextLine();
+				lastName = br.readLine();
 				Iterator<Person> i = addressBook.iterator();
 				while (i.hasNext()) {
 					Person p = i.next();
-					if (p.getLastName() == lastName) {
+					if (p.getLastName().equals(lastName)) {
 						i.remove();
 						found = true;
 					}
