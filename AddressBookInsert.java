@@ -6,6 +6,8 @@ package com.addressbook;
 
 import java.util.*;
 
+import java.io.*;
+
 /**
  * 
  * @author Kaif
@@ -16,6 +18,8 @@ import java.util.*;
  */
 class Person {
 
+	class Person {
+
 	/*
 	 * To declare characteristics of perosn class
 	 */
@@ -25,14 +29,14 @@ class Person {
 	private String address;
 	private String city;
 	private int zip;
-	private double phoneNumber;
+	private String phoneNumber;
 	private String email;
 
 	/*
 	 * To define constructor of person behaviours
 	 */
 
-	Person(String firstName, String lastName, String address, String city, int zip, double phoneNumber, String email) {
+	Person(String firstName, String lastName, String address, String city, int zip, String phoneNumber, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
@@ -67,7 +71,7 @@ class Person {
 		return zip;
 	}
 
-	public double getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
@@ -100,10 +104,10 @@ public class AddressBook {
 		 */
 
 		ArrayList<Person> addressBook = new ArrayList<Person>();
+		
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
 		Scanner sc = new Scanner(System.in);
-
-		Scanner s = new Scanner(System.in);
 
 		int choice;
 
@@ -130,25 +134,25 @@ public class AddressBook {
 
 			case 1:
 				System.out.println("Enter First name");
-				String firstName = sc.nextLine();
+				String firstName = br.readLine();
 
 				System.out.println("Enter Last name");
-				String lastName = sc.nextLine();
+				String lastName = br.readLine();
 
 				System.out.println("Enter Address");
-				String address = sc.nextLine();
+				String address = br.readLine();
 
 				System.out.println("Enter City");
-				String city = sc.nextLine();
+				String city = br.readLine();
 
 				System.out.println("Enter zip");
-				int zip = s.nextInt();
+				int zip = sc.nextInt();
 
 				System.out.println("Enter Phone Number");
-				double phoneNumber = s.nextDouble();
+				String phoneNumber = br.readLine();
 
 				System.out.println("Enter Email");
-				String email = sc.nextLine();
+				String email = br.readLine();
 
 				addressBook.add(new Person(firstName, lastName, address, city, zip, phoneNumber, email));
 
